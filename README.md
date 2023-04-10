@@ -19,7 +19,7 @@ Command Line Arguments To Access Following Features :
   Category : string
 * If user enters wrong data-type while adding or editing products-data. It shows invalid data and terminates.
 
-## **Packages/Module I Used**
+## **Packages/Modules I Used**
 
 * chalk - Chalk package is used to add colours to the output.
 * readline - Readline is used to prompt from the user.
