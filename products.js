@@ -5,13 +5,13 @@ const yargs = require("yargs");
 const Joi = require('joi');
 
 var products_data= [
-    {id:1, name:'a', price:12.0, category:'food'},
-    {id:2, name:'a', price:123.0, category:'food1'},
-    {id:3, name:'b', price:12.0, category:'food1'},
-    {id:4, name:'d', price:1.0, category:'foo3d'},
-    {id:5, name:'g', price:12.990, category:'foord'},
-    {id:6, name:'b', price:12.10, category:'food'},
-    {id:7, name:'c', price:32.0, category:'food'}
+    {id:1, name:'A', price:12.0, category:'Furniture'},
+    {id:2, name:'A', price:123.0, category:'Dishes'},
+    {id:3, name:'B', price:12.0, category:'Furniture'},
+    {id:4, name:'D', price:1, category:'Electronic'},
+    {id:5, name:'G', price:12.990, category:'Electronic'},
+    {id:6, name:'B', price:12.10, category:'Appliances'},
+    {id:7, name:'C', price:32, category:'Furniture'}
 ];
 
 //Create Interface
@@ -45,6 +45,11 @@ yargs.command({
     command: 'filter',
     describe: 'Filter Products Categories',
     handler:filterProduct
+})
+yargs.command({
+    command: 'exist',
+    describe: 'Check the product exist or not',
+    handler: existProduct
 })
 yargs.parse();
 
@@ -147,6 +152,20 @@ function filterProduct(){
         console.table(filter);
     })
     process.exit(0);
+}
+
+// 6.Function to check product exist or not
+function existProduct(){
+    rl.question('Enter product ID or Name to check product exist or not : ', (value) =>{
+        const product = products_data.find( product_data => product_data.id==value || product_data.name==value)
+        if(product){
+            console.table(product);
+            rl.close();
+        }else{
+            console.log(chalk.cyan(`There is no product with ${value}...`))
+            rl.close();
+        }
+    })
 }
 
 //Check input is validate or not
