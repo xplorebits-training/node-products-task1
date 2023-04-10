@@ -6,6 +6,7 @@ Command Line Arguments To Access Following Features :
 * Edit Product     - node products.js edit
 * Delete Product   - node products.js delete
 * Filter Products (Categories) - node products.js filter
+* Exist Product (Id/Name) - node products.js exist
 
 ## **Instructions**
 
